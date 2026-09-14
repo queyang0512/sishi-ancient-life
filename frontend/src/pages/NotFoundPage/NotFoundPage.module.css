@@ -1,0 +1,28 @@
+.page {
+  width: min(100% - var(--space-8), var(--content));
+  min-height: 70vh;
+  margin-inline: auto;
+  padding: 8rem 0 var(--space-16);
+}
+
+.page > p:first-child {
+  color: var(--color-cinnabar);
+  font-family: var(--font-serif);
+  letter-spacing: 0.2em;
+}
+
+.page h1 {
+  margin: var(--space-4) 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+}
+
+.page > p:not(:first-child) {
+  color: var(--color-ink-muted);
+}
+
+.page a {
+  margin-top: var(--space-6);
+  display: inline-block;
+  color: var(--color-cinnabar-dark);
+}

@@ -1,0 +1,194 @@
+.siteShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 10;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-paper);
+  background: var(--color-ink);
+  transform: translateY(-160%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: min(100% - var(--space-8), var(--content-wide));
+  min-height: 5.5rem;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 1fr minmax(16rem, 22rem) auto;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand strong {
+  font-size: var(--text-2xl);
+  letter-spacing: 0.08em;
+}
+
+.brand small {
+  padding-left: var(--space-2);
+  border-left: 1px solid var(--color-line-strong);
+  color: var(--color-ink-muted);
+  font-family: Georgia, serif;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  line-height: 1.35;
+}
+
+.navList {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-3);
+  color: var(--color-navy);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.navLink::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.25rem;
+  left: 0;
+  height: 1px;
+  background: var(--color-navy);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0.25);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.searchLink {
+  min-height: 2.5rem;
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow: hidden;
+  border: 1px solid rgba(139, 160, 171, 0.45);
+  border-radius: 999px;
+  color: var(--color-ink-muted);
+  background: rgba(255, 255, 255, 0.62);
+  font-size: var(--text-xs);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  backdrop-filter: blur(0.75rem);
+}
+
+.searchLink svg { width: 1rem; flex: 0 0 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+.aboutLink { color: var(--color-navy); font-family: var(--font-serif); font-size: var(--text-sm); text-decoration: none; white-space: nowrap; }
+
+.navLink:hover,
+.navLinkActive {
+  color: var(--color-ink);
+}
+
+.navLinkActive::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.main {
+  width: 100%;
+}
+
+.footer {
+  width: min(100% - var(--space-8), var(--content-wide));
+  margin-inline: auto;
+  padding-block: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-muted);
+  background: var(--color-paper);
+  font-size: var(--text-xs);
+}
+
+.footer p {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+}
+
+.footer a {
+  color: inherit;
+}
+
+@media (max-width: 64rem) and (min-width: 48.01rem) {
+  .header {
+    width: calc(100% - 2.5rem);
+    grid-template-columns: auto 1fr minmax(12rem, 18rem) auto;
+    gap: var(--space-4);
+  }
+
+  .navList {
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 48rem) {
+  .header {
+    min-height: auto;
+    padding-block: var(--space-4);
+    grid-template-columns: auto 1fr;
+  }
+
+  .aboutLink { display: none; }
+
+  .header nav { grid-column: 1 / -1; grid-row: 2; }
+  .searchLink { justify-self: end; width: 2.75rem; padding-inline: 0; justify-content: center; color: var(--color-navy); }
+  .searchLink span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .navList {
+    width: calc(100vw - var(--space-8));
+    padding-bottom: 0;
+    justify-content: flex-start;
+    gap: var(--space-5);
+    overflow-x: auto;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

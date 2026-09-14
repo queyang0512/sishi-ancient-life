@@ -1,0 +1,98 @@
+/* Primitive seasonal palettes feed the existing semantic site tokens. */
+.theme {
+  --theme-accent: #c94b37;
+  --theme-accent-dark: #9e3528;
+  --theme-paper: #f8faf9;
+  --theme-paper-rgb: 248, 250, 249;
+  --theme-paper-deep: #edf3f4;
+  --theme-mist: #f1f6f7;
+  --theme-line: #dce5e8;
+  --theme-pine: #4d7067;
+  --hero-season-image: url('/images/season-autumn-v1.jpg');
+
+  --color-cinnabar: var(--theme-accent);
+  --color-cinnabar-dark: var(--theme-accent-dark);
+  --color-paper: var(--theme-paper);
+  --color-paper-deep: var(--theme-paper-deep);
+  --color-mist: var(--theme-mist);
+  --color-line: var(--theme-line);
+  --color-pine: var(--theme-pine);
+
+  color: var(--color-ink);
+  background: var(--color-paper);
+  transition: background-color 240ms ease, color 240ms ease;
+}
+
+.theme[data-season='春'] {
+  --theme-accent: #55785b;
+  --theme-accent-dark: #3e6247;
+  --theme-paper: #fafcf9;
+  --theme-paper-rgb: 250, 252, 249;
+  --theme-paper-deep: #eaf2e9;
+  --theme-mist: #f2f7f2;
+  --theme-line: #d9e6d9;
+  --theme-pine: #4f7359;
+  --hero-season-image: url('/images/season-spring-v1.jpg');
+}
+
+.theme[data-season='夏'] {
+  --theme-accent: #2e726d;
+  --theme-accent-dark: #205a56;
+  --theme-paper: #f9fcfb;
+  --theme-paper-rgb: 249, 252, 251;
+  --theme-paper-deep: #e3f1ee;
+  --theme-mist: #eef8f6;
+  --theme-line: #d3e7e3;
+  --theme-pine: #346d62;
+  --hero-season-image: url('/images/season-summer-v1.jpg');
+}
+
+.theme[data-season='秋'] {
+  --theme-accent: #b45138;
+  --theme-accent-dark: #8f3c2a;
+  --theme-paper: #fbfaf7;
+  --theme-paper-rgb: 251, 250, 247;
+  --theme-paper-deep: #f2ece3;
+  --theme-mist: #f6f1e9;
+  --theme-line: #e7ded2;
+  --theme-pine: #5d7467;
+  --hero-season-image: url('/images/season-autumn-v1.jpg');
+}
+
+.theme[data-season='冬'] {
+  --theme-accent: #4b6478;
+  --theme-accent-dark: #344d61;
+  --theme-paper: #f8fafb;
+  --theme-paper-rgb: 248, 250, 251;
+  --theme-paper-deep: #e7edf1;
+  --theme-mist: #eef3f6;
+  --theme-line: #d7e0e6;
+  --theme-pine: #536b70;
+  --hero-season-image: url('/images/season-winter-v1.jpg');
+}
+
+/* Twenty-four restrained modifiers: identity changes without changing layout. */
+.theme[data-term='lichun'] { --theme-accent: #55785b; }
+.theme[data-term='yushui'] { --theme-accent: #47766f; }
+.theme[data-term='jingzhe'] { --theme-accent: #78605d; }
+.theme[data-term='chunfen'] { --theme-accent: #6e7d52; }
+.theme[data-term='qingming'] { --theme-accent: #3f7467; }
+.theme[data-term='guyu'] { --theme-accent: #667044; }
+.theme[data-term='lixia'] { --theme-accent: #39735b; }
+.theme[data-term='xiaoman'] { --theme-accent: #347568; }
+.theme[data-term='mangzhong'] { --theme-accent: #7a6a32; }
+.theme[data-term='xiazhi'] { --theme-accent: #8a5549; }
+.theme[data-term='xiaoshu'] { --theme-accent: #356e78; }
+.theme[data-term='dashu'] { --theme-accent: #9a4939; }
+.theme[data-term='liqiu'] { --theme-accent: #8b6337; }
+.theme[data-term='chushu'] { --theme-accent: #6f7045; }
+.theme[data-term='bailu'] { --theme-accent: #c94b37; --theme-accent-dark: #9e3528; }
+.theme[data-term='qiufen'] { --theme-accent: #9a6731; }
+.theme[data-term='hanlu'] { --theme-accent: #796047; }
+.theme[data-term='shuangjiang'] { --theme-accent: #994735; }
+.theme[data-term='lidong'] { --theme-accent: #4d6077; }
+.theme[data-term='xiaoxue'] { --theme-accent: #5d7182; }
+.theme[data-term='daxue'] { --theme-accent: #536779; }
+.theme[data-term='dongzhi'] { --theme-accent: #775367; }
+.theme[data-term='xiaohan'] { --theme-accent: #45686b; }
+.theme[data-term='dahan'] { --theme-accent: #3f586e; }
