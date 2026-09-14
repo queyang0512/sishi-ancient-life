@@ -32,8 +32,8 @@ export function SiteLayout() {
       </a>
       <header className={styles.header}>
         <NavLink className={styles.brand} to="/" aria-label="古人日常首页">
-          <strong>四时</strong>
-          <small>ANCIENT<br />CHINA</small>
+          <strong>古人日常</strong>
+          <small>ANCIENT<br />DAILY LIFE</small>
         </NavLink>
         <nav aria-label="主导航">
           <ul className={styles.navList}>
@@ -65,7 +65,7 @@ export function SiteLayout() {
       </main>
 
       <footer className={styles.footer}>
-        <p>循四时，见日常。</p>
+        <p>古人日常 · 循四时，见生活。</p>
         <SystemStatus />
         <NavLink to="/about">关于与资料来源</NavLink>
       </footer>
