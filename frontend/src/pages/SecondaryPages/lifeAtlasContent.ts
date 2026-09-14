@@ -54,26 +54,52 @@ const categoryAction: Record<CategoryKey, string> = {
   food: '顺时取味', clothing: '随候增减', home: '安顿居所', travel: '择时而行', work: '应时劳作', leisure: '体会闲趣', custom: '记住时序', taboo: '趋利避害',
 }
 
-const foodTimeEntries: Record<string, { title: string; summary: string; image: string; to: string }[]> = {
+const categoryPractice: Record<CategoryKey, string> = {
+  food: '依照当时可得的食材与气候调配饮食，重在应季、适量与家常做法。',
+  clothing: '根据温度、风雨和活动场景增减衣物，并以材质与层次调节体感。',
+  home: '通过开合门窗、整理寝具与调整室内陈设，让居所顺应天气变化。',
+  travel: '先看天气与路况，再决定远近、时辰和交通方式，尽量避开不利时段。',
+  work: '观察物候、土壤和晴雨，把劳作安排在更合适的时段，并及时收整工具。',
+  leisure: '选择适宜的时辰与环境，在庭院、郊野或居室中体会当季闲趣。',
+  custom: '借由家人共同参与的节令活动，把自然变化转化为可感知的生活仪式。',
+  taboo: '留意风寒、湿热和道路环境，减少久坐、受凉或冒险出行等不适宜行为。',
+}
+
+const categoryReason: Record<CategoryKey, string> = {
+  food: '物产与身体感受都会随季节变化，顺时取食更便于获得食材，也符合日常调养需要。',
+  clothing: '气温和湿度并非一日不变，分层增减比骤然换装更容易适应环境。',
+  home: '居室中的光、风、湿度与温度直接影响起居舒适度，因此需要随候调整。',
+  travel: '传统出行更依赖自然条件，选择合适时机能够减少体力消耗和途中风险。',
+  work: '农事与手工活动都有时间窗口，顺应天气和物候可以减少损耗、提高成效。',
+  leisure: '游赏与休息并非脱离日常，而是人在季节变化中舒展身心的一种方式。',
+  custom: '共同仪式帮助人们确认时间、维系关系，也让抽象的节令进入具体生活。',
+  taboo: '许多避忌来自长期生活经验，核心是对寒暑、湿滑与身体承受能力的朴素判断。',
+}
+
+function atlasEntryPath(category: CategoryKey, view: AtlasView, groupIndex: number, entryIndex: number) {
+  return `/item/atlas-${category}-${view}-${groupIndex}-${entryIndex}`
+}
+
+const foodTimeEntries: Record<string, { title: string; summary: string; image: string; to?: string }[]> = {
   春: [
     { title: '春盘尝新', summary: '以时蔬入盘，迎接春天的生机。', image: '/images/atlas-food-spring-v1.jpg', to: '/item/lichun-spring-dish' },
-    { title: '春茶', summary: '一杯新茶，唤醒春日的味觉。', image: '/images/tea-incense.png', to: '/search?q=%E6%98%A5%E8%8C%B6' },
-    { title: '荠菜', summary: '春日野菜，清新可口。', image: '/images/atlas-food-spring-v1.jpg', to: '/search?q=%E8%8D%A0%E8%8F%9C' },
+    { title: '春茶', summary: '一杯新茶，唤醒春日的味觉。', image: '/images/tea-incense.png' },
+    { title: '荠菜', summary: '春日野菜，清新可口。', image: '/images/atlas-food-spring-v1.jpg' },
   ],
   夏: [
-    { title: '消暑饮', summary: '以酸梅汤、绿豆汤解暑。', image: '/images/atlas-food-summer-v1.jpg', to: '/search?q=%E6%B6%88%E6%9A%91%E9%A5%AE' },
-    { title: '瓜果', summary: '西瓜、香瓜，时令之味。', image: '/images/atlas-food-summer-v1.jpg', to: '/search?q=%E7%93%9C%E6%9E%9C' },
+    { title: '消暑饮', summary: '以酸梅汤、绿豆汤解暑。', image: '/images/atlas-food-summer-v1.jpg' },
+    { title: '瓜果', summary: '西瓜、香瓜，时令之味。', image: '/images/atlas-food-summer-v1.jpg' },
     { title: '伏日清饮', summary: '温凉有度，补水解渴。', image: '/images/atlas-food-summer-v1.jpg', to: '/item/dashu-herbal-tea' },
   ],
   秋: [
     { title: '秋梨', summary: '润燥养肺，秋日佳果。', image: '/images/atlas-food-autumn-v1.jpg', to: '/item/autumn-pear' },
     { title: '秋茶', summary: '茶性渐平，宜品清润之味。', image: '/images/tea-incense.png', to: '/item/bailu-tea' },
-    { title: '蟹', summary: '菊黄蟹肥，秋日时鲜。', image: '/images/atlas-food-crab-v1.jpg', to: '/search?q=%E7%A7%8B%E8%9F%B9' },
+    { title: '蟹', summary: '菊黄蟹肥，秋日时鲜。', image: '/images/atlas-food-crab-v1.jpg' },
   ],
   冬: [
-    { title: '羊肉', summary: '温补御寒，冬日常食。', image: '/images/atlas-food-winter-v1.jpg', to: '/search?q=%E7%BE%8A%E8%82%89' },
-    { title: '腊味', summary: '岁末腌藏，风味悠长。', image: '/images/atlas-food-cured-v1.jpg', to: '/search?q=%E8%85%8A%E5%91%B3' },
-    { title: '暖酒', summary: '温酒驱寒，暖身安心。', image: '/images/tea-incense.png', to: '/search?q=%E6%9A%96%E9%85%92' },
+    { title: '羊肉', summary: '温补御寒，冬日常食。', image: '/images/atlas-food-winter-v1.jpg' },
+    { title: '腊味', summary: '岁末腌藏，风味悠长。', image: '/images/atlas-food-cured-v1.jpg' },
+    { title: '暖酒', summary: '温酒驱寒，暖身安心。', image: '/images/tea-incense.png' },
   ],
 }
 
@@ -92,15 +118,50 @@ export function buildAtlasGroups(view: AtlasView, category: CategoryKey, items: 
         ? matchesDynasty(item.dynasty, group.key)
         : matchesRegion(item.region, group.key))
     const topics = categoryTopics[category].slice(groupIndex * 3, groupIndex * 3 + 3)
-    const entries = view === 'time' && category === 'food' ? foodTimeEntries[group.key] : Array.from({ length: 3 }, (_, index) => {
+    const rawEntries = view === 'time' && category === 'food' ? foodTimeEntries[group.key] : Array.from({ length: 3 }, (_, index) => {
       const item = matched[index]
       if (item) return { title: item.title, summary: item.summary, image: item.image, to: `/item/${item.id}` }
       const title = topics[index]
-      return { title, summary: `${title}应候而用，${categoryAction[category]}。`, image: group.image, to: `/search?q=${encodeURIComponent(title)}` }
+      return { title, summary: `${title}应候而用，${categoryAction[category]}。`, image: group.image, to: atlasEntryPath(category, view, groupIndex, index) }
     })
+    const entries = rawEntries.map((entry, entryIndex) => ({
+      ...entry,
+      to: entry.to ?? atlasEntryPath(category, view, groupIndex, entryIndex),
+    }))
     const image = view === 'time' && category === 'food' ? foodSeasonImages[group.key] : group.image
     return { ...group, image, items: entries }
   })
+}
+
+export function getAtlasDetailItem(id: string | undefined, items: CultureItem[], terms: SolarTerm[]): CultureItem | undefined {
+  if (!id) return undefined
+  const match = /^atlas-(food|clothing|home|travel|work|leisure|custom|taboo)-(time|dynasty|region)-(\d+)-(\d+)$/.exec(id)
+  if (!match) return undefined
+
+  const category = match[1] as CategoryKey
+  const view = match[2] as AtlasView
+  const groupIndex = Number(match[3])
+  const entryIndex = Number(match[4])
+  const group = buildAtlasGroups(view, category, items, terms)[groupIndex]
+  const entry = group?.items[entryIndex]
+  if (!group || !entry) return undefined
+
+  return {
+    id,
+    title: entry.title,
+    category,
+    term: view === 'time' ? `${group.label}季` : '四时',
+    dynasty: view === 'dynasty' ? group.label : '历代',
+    region: view === 'region' ? group.label : '多地',
+    image: entry.image,
+    summary: entry.summary,
+    practice: `围绕“${entry.title}”，古人会结合${group.tagline}的环境特点安排日常。${categoryPractice[category]}`,
+    reason: `${group.tagline}、${group.change}，生活方式也需要随之调整。${categoryReason[category]}`,
+    source: '传统生活资料与节令民俗综合整理',
+    sourceType: 'modern_research' as const,
+    citation: '依据相关生活史、节令民俗与物质文化资料进行概括性整理。',
+    evidenceLevel: 'D' as const,
+  }
 }
 
 function matchesDynasty(value: string, key: string) {

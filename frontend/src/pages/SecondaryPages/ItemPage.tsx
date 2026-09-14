@@ -1,6 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { useContent } from '../../data/ContentProvider'
 import { CausalFlow, ItemCard, SectionTitle } from './PageElements'
+import { getAtlasDetailItem } from './lifeAtlasContent'
 import styles from './SecondaryPages.module.css'
 
 const labels: Record<string,string> = { food:'食',clothing:'衣',home:'居',travel:'行',work:'作',leisure:'乐',custom:'俗',taboo:'忌' }
@@ -27,9 +28,9 @@ function relatedItems(item: { id:string; term:string; category:string; region:st
 }
 
 export function ItemPage() {
-  const { cultureItems } = useContent()
+  const { cultureItems, solarTerms } = useContent()
   const { id } = useParams()
-  const item = cultureItems.find((entry) => entry.id === id)
+  const item = cultureItems.find((entry) => entry.id === id) ?? getAtlasDetailItem(id, cultureItems, solarTerms)
   if (!item) return <Navigate to="/life" replace />
   const recommendations = relatedItems(item,cultureItems)
   const evidence = evidenceLabels[item.evidenceLevel ?? 'C']
