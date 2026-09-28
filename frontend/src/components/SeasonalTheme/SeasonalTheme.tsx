@@ -35,7 +35,7 @@ const termHeroImages: Record<string, string> = {
   liqiu: '/images/term-liqiu-v2.webp',
   chushu: '/images/term-chushu-v2.webp',
   bailu: '/images/term-bailu-v2.webp',
-  qiufen: '/images/term-qiufen-v2.webp',
+  qiufen: '/images/season-autumn-v1.jpg',
   hanlu: '/images/term-hanlu-v2.webp',
   shuangjiang: '/images/term-shuangjiang-v2.webp',
   lidong: '/images/term-lidong-v2.webp',
