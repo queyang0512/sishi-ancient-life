@@ -76,7 +76,10 @@ const termBoundaries = [
   [1008,'hanlu'],[1023,'shuangjiang'],[1107,'lidong'],[1122,'xiaoxue'],[1207,'daxue'],[1222,'dongzhi'],
 ] as const
 
-export function getCurrentSeasonalContext(date = new Date()) {
+// 页面展示目前固定在白露，便于统一检查白露主题素材；恢复真实日期时改为 null。
+const contentPreviewDate: Date | null = new Date(2026, 8, 8)
+
+export function getCurrentSeasonalContext(date = contentPreviewDate ?? new Date()) {
   const value = (date.getMonth() + 1) * 100 + date.getDate()
   let slug = value < 105 ? 'dongzhi' : 'xiaohan'
   for (const [boundary, candidate] of termBoundaries) if (value >= boundary) slug = candidate
