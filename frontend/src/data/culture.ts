@@ -76,8 +76,8 @@ const termBoundaries = [
   [1008,'hanlu'],[1023,'shuangjiang'],[1107,'lidong'],[1122,'xiaoxue'],[1207,'daxue'],[1222,'dongzhi'],
 ] as const
 
-// 临时预览小雪；确认效果后改回 null，恢复按真实日期自动判断。
-const contentPreviewDate: Date | null = new Date(2026, 10, 22)
+// 临时预览霜降；确认效果后改回 null，恢复按真实日期自动判断。
+const contentPreviewDate: Date | null = new Date(2026, 9, 23)
 
 export function getCurrentSeasonalContext(date = contentPreviewDate ?? new Date()) {
   const value = (date.getMonth() + 1) * 100 + date.getDate()
@@ -88,3 +88,4 @@ export function getCurrentSeasonalContext(date = contentPreviewDate ?? new Date(
   const lunarLabel = new Intl.DateTimeFormat('zh-CN-u-ca-chinese', { month: 'long', day: 'numeric' }).format(date)
   return { term, dateLabel, lunarLabel }
 }
+
